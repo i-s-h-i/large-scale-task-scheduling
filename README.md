@@ -83,7 +83,7 @@ Ensure that the CSV dataset is accessible from the program's working directory b
 
 ## 5. Input Format
 
-The programs read tasks from `tasks_seed42_1000000.csv`.
+The programs read tasks from `tasks.csv`.
 
 Expected format:
 
