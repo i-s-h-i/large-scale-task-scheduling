@@ -12,7 +12,7 @@ int main()
     mt19937 rng(42);
     uniform_int_distribution<int> dist(1, 100);
 
-    ofstream file("tasks_seed42_1000000.csv");
+    ofstream file("tasks.csv");
 
     if (!file.is_open())
     {
