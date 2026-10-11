@@ -165,7 +165,7 @@ int main()
 
     // Load input BEFORE timing the scheduler
     vector<Task> tasks =
-        loadTasksFromCSV("tasks_seed42_1000000.csv", n);
+        loadTasksFromCSV("tasks.csv", n);
 
     if (tasks.size() != static_cast<size_t>(n))
     {
