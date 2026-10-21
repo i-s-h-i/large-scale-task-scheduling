@@ -191,21 +191,37 @@ int main()
 {
     int n, m, threads;
 
+    // Get the number of processors available on the system
+    int maxThreads = omp_get_num_procs();
+
+    cout << "Available logical processors: " << maxThreads << "\n";
+
     cout << "Enter number of tasks (max 1000000): ";
     cin >> n;
 
     cout << "Enter number of resources: ";
     cin >> m;
 
-    cout << "Enter number of threads: ";
+    cout << "Enter number of threads (max " << maxThreads << "): ";
     cin >> threads;
 
+    // Validate input
     if (!cin || n <= 0 || n > 1000000 ||
-        m <= 0 || threads <= 0)
+        m <= 0 || threads <= 0 || threads > maxThreads)
     {
         cout << "Invalid input.\n";
+
+        if (threads > maxThreads)
+        {
+            cout << "Error: Maximum allowed threads on this system is "
+                 << maxThreads << ".\n";
+        }
+
         return 1;
     }
+
+    // Prevent OpenMP from dynamically reducing the thread count
+    omp_set_dynamic(0);
 
     omp_set_num_threads(threads);
 
